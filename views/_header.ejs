@@ -1,3 +1,38 @@
-<header>
-    <h1>Page Header</h1>
+<header id="layout-header">
+    <nav>
+        <div class="mini-logo">
+            <p style="padding-left: 20px;">
+                <a href='/'>
+                    Etilaicos
+                </a>
+            </p>
+        </div>
+    
+        <div class="auth-links">
+            <ul>
+                <% if (locals.user){ %>
+                <li>
+                    <a href="/">Home</a>
+                </li>   
+                <li>
+                    <a href="/users/profile"><%= user.name %></a>
+                </li>
+                <li>
+                    <a href="/users/sign-out">Sign Out</a>
+                </li>
+                <% }else{ %>
+                <li>
+                    <a href="/users/sign-in">Sign In</a>
+                </li>
+                <li>
+                    <a href="/users/sign-up">Sign Up</a>
+                </li>
+        
+                <% } %>
+            </ul>
+        </div>
+    </nav>
+ 
+
+
 </header>

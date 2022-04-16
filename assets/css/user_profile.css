@@ -1,0 +1,13 @@
+body {
+  background-color: aliceblue;
+}
+
+h1 {
+  padding-left: 30px;
+}
+
+#user-info {
+  padding-left: 30px;
+  font-family: sans-serif;
+  font-weight: bold;
+}

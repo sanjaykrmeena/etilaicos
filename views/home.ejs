@@ -1,20 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>
-        <%= title %>
-    </title>
-    <link rel="stylesheet" href="/css/home.css">
+    <!-- <title>Document</title> -->
 </head>
-
 <body>
 
-    <div class="card">
-        <div class="header">
-            <h1><%= title %></h1>
-        </div>
-      </div>
-
+    <% if (locals.user){ %>
+        <h1 style="padding-left: 30px;">
+            Etilaicos / <%= title %>
+        </h1>
+        <% }else{ %>
+            <img src="/images/bck2.png" style="
+                width: 100%;
+                align-items : center;
+                height: 100%; background-position: center center; background-size: cover;" 
+                alt="img">
+        <% } %>
+    
 </body>
-
-</html>
+</html>        

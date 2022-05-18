@@ -2,21 +2,39 @@
 <html lang="en">
 <head>
     <!-- <title>Document</title> -->
-    <link rel="stylesheet" href="/css/fee-posts.css">
+    <link rel="icon" href="/images/logo_2.png">
+
+    <link rel="stylesheet" href="/css/feed-posts.css">
 </head>
 <body>
 
     <% if (locals.user){ %>
-        <h1 style="padding-left: 30px;">
+        <h2 style="padding-left: 20px; padding-top: 4%; position: fixed;">
             <%= title %>
-        </h1>
+        </h2>
 
-        <section id="feed-posts" class="card">
-            <h3 style="padding-top: 10px;">Posts</h3>
-            <form action="" id="new-post-form" method="post">
-                <textarea name="content" cols="50" rows="4" placeholder="Type Here..."></textarea> <br> <br>
+        <section id="feed-posts">
+            <h2 style="margin-left: -52%; padding-top: 10%;">Posts</h2>
+            <form action="/posts/create" id="new-post-form" method="post" class="card">
+                <textarea name="content" cols="50" rows="4" placeholder="Type Here..." style="margin-top: 10px;"></textarea> <br> <br>
                 <input type="submit" value="Post">
             </form>
+
+            <div id="posts-list-container" style="margin-right: 5%; margin-left: -5%;">
+                <ul style="list-style: none;">
+                    <% for(post of posts) { %> 
+                        
+                        <li>
+                            <%= post.content %>
+                            <br>
+                            <small>
+                                <%= post.user.name %>
+                            </small>
+                        </li>
+
+                    <% } %>
+                </ul>
+            </div>
         </section>
 
 
@@ -24,7 +42,9 @@
             <img src="/images/bck2.png" style="
                 width: 100%;
                 align-items : center;
-                height: 100%; background-position: center center; background-size: cover;" 
+                height: 100%; 
+                background-position: center center; background-size: cover;
+                margin-top: 50px;"
                 alt="img">
         <% } %>
     

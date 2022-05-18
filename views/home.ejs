@@ -16,8 +16,9 @@
         <section id="feed-posts">
             <h2 style="margin-left: -52%; padding-top: 10%;">Posts</h2>
             <form action="/posts/create" id="new-post-form" method="post" class="card">
-                <textarea name="content" cols="50" rows="4" placeholder="Type Here..." style="margin-top: 10px;"></textarea> <br> <br>
-                <input type="submit" value="Post">
+                <textarea name="content" cols="50" rows="4" placeholder="Type Here..." 
+                          style="margin-top: 15px; outline: none; border: none; background-color: lightyellow;"></textarea> <br> <br>
+                <input type="submit" value="Post" class="btn">
             </form>
 
             <div id="posts-list-container" style="margin-right: 5%; margin-left: -5%;">
@@ -30,6 +31,17 @@
                             <small>
                                 <%= post.user.name %>
                             </small>
+                            <p></p>
+                            <div class="post-comments">
+                                <% if(locals.user) { %> 
+                                    <form action="comments/create" method="post">
+                                        <input type="text" name="content" placeholder="Type Here to add comment... "
+                                               style="width: 270px; outline: none; border: none; background-color: honeydew;">
+                                        <input type="hidden" name="post" value="<%= post._id %>">
+                                        <input type="submit" value="Add Comment" class="comment-btn">
+                                    </form>
+                                <% } %>
+                            </div>
                         </li>
 
                     <% } %>

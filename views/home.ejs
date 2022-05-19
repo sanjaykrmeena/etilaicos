@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <!-- <title>Document</title> -->
     <script src="https://kit.fontawesome.com/d817911436.js" crossorigin="anonymous"></script>
     <link rel="icon" href="/images/logo_2.png">
     <link rel="stylesheet" href="/css/feed-posts.css">
 </head>
+
 <body>
 
     <% if (locals.user){ %>
@@ -13,76 +15,45 @@
             Home
         </h2>
 
-        <section id="feed-posts">
-            <h2 style="margin-left: -52%; padding-top: 10%;">Posts</h2>
-            <form action="/posts/create" id="new-post-form" method="post" class="card">
-                <textarea name="content" cols="50" rows="4" placeholder="Type Here..." required 
-                          style="margin-top: 15px; outline: none; border: none; background-color: lightyellow;"></textarea> <br> <br>
-                <input type="submit" value="Post" class="btn">
-            </form>
 
-            <div id="posts-list-container" style="margin-right: 5%; margin-left: -5%;">
-                <ul style="list-style: none;">
-                    <% for(post of posts) { %> 
-                        
-                        <li>
-                            
-                            <% if(locals.user.id == post.user.id) { %> 
-                                <small id="post-delete-btn">
-                                    <a href="/posts/destroy/<%= post.id %>" style="text-decoration: none;">
-                                        <img src="/images/circle-minus-solid.svg" alt="delete">
-                                    </a>
-                                </small>
-                            <% } %>
+        <div id="home-container">
 
-                            <%= post.content %>
-                            <br>
-                            <small>
-                                <%= post.user.name %>
-                            </small>
-                            <p></p>
-                            <div class="post-comments">
-                                <% if(locals.user) { %> 
-                                    <form action="comments/create" method="post">
-                                        <input type="text" name="content" placeholder="Type Here to add comment... " required
-                                               style="width: 270px; outline: none; border: none; background-color: honeydew;">
-                                        <input type="hidden" name="post" value="<%= post._id %>">
-                                        <input type="submit" value="Add Comment" class="comment-btn">
-                                    </form>
+            <section id="menu">
+                <h2>MENU</h2>
+            </section>
+
+            <section id="feed-posts">
+                <h2 style="padding-top: 10%;">Posts</h2>
+                <form action="/posts/create" id="new-post-form" method="post" class="card">
+                    <textarea name="content" cols="50" rows="6" placeholder="Type Here..." required
+                        style="width: 92%; margin-top: 20px; outline: none; border: none; background-color: honeydew;"></textarea>
+                    <br> <br>
+                    <input type="submit" value="Post" class="btn">
+                </form>
+
+                <div id="posts-list-container" style="margin-right: 5%; margin-left: -5%;">
+                    <ul style="list-style: none;">
+                        <% for(post of posts) { %>
+
+                            <%- include('_post') -%>
+
                                 <% } %>
-
-                                <div class="post-comments-list">
-                                    <ul id="post-comments-<%= post._id %>">
-                                        <% for(comment of post.comments) { %>
-
-                                            <p>
-
-                                                <% if(locals.user.id == comment.user.id) { %> 
-                                                    <small id="comment-delete-btn">
-                                                        <a href="/comments/destroy/<%= comment.id %>" style="text-decoration: none;">
-                                                            <img src="/images/circle-minus-solid.svg" alt="delete"> 
-                                                        </a>
-                                                    </small>
-                                                <% } %>
+                    </ul>
+                </div>
+            </section>
 
 
-                                                <%= comment.content %>
-                                                <br>
-                                                <small>
-                                                    <%= comment.user.name %>
-                                                </small>
-                                            </p>
-
-                                        <% } %>
-                                    </ul>
-                                </div>
-                            </div>
-                        </li>
-
+            <section id="user-friends">
+                <h2>Friends</h2>
+                <% for(u of all_users) { %>
+                    <p>
+                        <a href="/users/profile/<%= u.id %>">
+                            <%= u.name %>
+                        </a>
+                    </p>
                     <% } %>
-                </ul>
-            </div>
-        </section>
+            </section>
+        </div>
 
 
         <% }else{ %>
@@ -91,9 +62,9 @@
                 align-items : center;
                 height: 100%; 
                 background-position: center center; background-size: cover;
-                margin-top: 50px;"
-                alt="img">
-        <% } %>
-    
+                margin-top: 50px;" alt="img">
+            <% } %>
+
 </body>
-</html>        
+
+</html>

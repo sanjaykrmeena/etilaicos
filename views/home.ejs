@@ -2,21 +2,21 @@
 <html lang="en">
 <head>
     <!-- <title>Document</title> -->
+    <script src="https://kit.fontawesome.com/d817911436.js" crossorigin="anonymous"></script>
     <link rel="icon" href="/images/logo_2.png">
-
     <link rel="stylesheet" href="/css/feed-posts.css">
 </head>
 <body>
 
     <% if (locals.user){ %>
         <h2 style="padding-left: 20px; padding-top: 4%; position: fixed;">
-            <%= title %>
+            Home
         </h2>
 
         <section id="feed-posts">
             <h2 style="margin-left: -52%; padding-top: 10%;">Posts</h2>
             <form action="/posts/create" id="new-post-form" method="post" class="card">
-                <textarea name="content" cols="50" rows="4" placeholder="Type Here..." 
+                <textarea name="content" cols="50" rows="4" placeholder="Type Here..." required 
                           style="margin-top: 15px; outline: none; border: none; background-color: lightyellow;"></textarea> <br> <br>
                 <input type="submit" value="Post" class="btn">
             </form>
@@ -26,6 +26,15 @@
                     <% for(post of posts) { %> 
                         
                         <li>
+                            
+                            <% if(locals.user.id == post.user.id) { %> 
+                                <small id="post-delete-btn">
+                                    <a href="/posts/destroy/<%= post.id %>" style="text-decoration: none;">
+                                        <img src="/images/circle-minus-solid.svg" alt="delete">
+                                    </a>
+                                </small>
+                            <% } %>
+
                             <%= post.content %>
                             <br>
                             <small>
@@ -35,12 +44,38 @@
                             <div class="post-comments">
                                 <% if(locals.user) { %> 
                                     <form action="comments/create" method="post">
-                                        <input type="text" name="content" placeholder="Type Here to add comment... "
+                                        <input type="text" name="content" placeholder="Type Here to add comment... " required
                                                style="width: 270px; outline: none; border: none; background-color: honeydew;">
                                         <input type="hidden" name="post" value="<%= post._id %>">
                                         <input type="submit" value="Add Comment" class="comment-btn">
                                     </form>
                                 <% } %>
+
+                                <div class="post-comments-list">
+                                    <ul id="post-comments-<%= post._id %>">
+                                        <% for(comment of post.comments) { %>
+
+                                            <p>
+
+                                                <% if(locals.user.id == comment.user.id) { %> 
+                                                    <small id="comment-delete-btn">
+                                                        <a href="/comments/destroy/<%= comment.id %>" style="text-decoration: none;">
+                                                            <img src="/images/circle-minus-solid.svg" alt="delete"> 
+                                                        </a>
+                                                    </small>
+                                                <% } %>
+
+
+                                                <%= comment.content %>
+                                                <br>
+                                                <small>
+                                                    <%= comment.user.name %>
+                                                </small>
+                                            </p>
+
+                                        <% } %>
+                                    </ul>
+                                </div>
                             </div>
                         </li>
 

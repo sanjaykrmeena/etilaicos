@@ -110,3 +110,15 @@ img {
   /* some variation of blue for the shadow */
   outline: none;
 }
+
+#post-delete-btn a img {
+    height: 15px;
+    width: 15px;
+    color: red;
+}
+
+#comment-delete-btn a img {
+    height: 12px;
+    width: 12px;
+    color: red; 
+}

@@ -6,26 +6,29 @@
 
 #menu {
     width: 40%;
-    border-right: 1px solid lightgrey;
+    border-right: 2px solid white;
     height: 100vh;
 }
 
 /* **********************FRIENDS SECTION************************** */
 
 #user-friends {
-    /* position: fixed; */
     margin-top: 2%;
     width: 30%;
     padding: 40px;
-    border-left: 1px solid lightgrey;
+    border-left: 2px solid white;
     height: 100vh;
     /* margin-left: 80%; */
+    font-family: Helvetica, Arial, sans-serif;
+    color: grey;
 }
 
 
 #user-friends p a {
     text-decoration: none;
-    color: black;
+    color: grey;
+    /* font-size: large; */
+    font-weight: bold;
 }
 
 

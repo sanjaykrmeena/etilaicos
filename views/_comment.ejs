@@ -1,13 +1,12 @@
-<p>
+<p id="comment-<%= comment._id %>">
 
     <% if(locals.user.id == comment.user.id) { %> 
         <small id="comment-delete-btn">
-            <a href="/comments/destroy/<%= comment.id %>" style="text-decoration: none;">
+            <a class="delete-comment-button" href="/comments/destroy/<%= comment.id %>" style="text-decoration: none;">
                 <img src="/images/circle-minus-solid.svg" alt="delete"> 
             </a>
         </small>
     <% } %>
-
 
     <%= comment.content %>
     <br>

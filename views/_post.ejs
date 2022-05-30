@@ -8,11 +8,12 @@
         </small>
     <% } %>
 
-    <%= post.content %>
-    <br>
+    
     <small>
-        <%= post.user.name %>
+        <strong><%= post.user.name %></strong>
     </small>
+    <br>
+    <%= post.content %>
     <p></p>
     <div class="post-comments">
         <% if(locals.user) { %>

@@ -44,13 +44,14 @@
                     <img src="/images/circle-minus-solid.svg" alt="delete">
                     </a>
                 </small>
+                
                     
-                ${ post.content }
-                <br>
                 <small>
-                ${ post.user.name }
+                    <strong> ${ post.user.name } </strong>
                 </small>
-
+                <br>
+                ${ post.content }
+                <p></p>
                 <div class="post-comments">
                     
                         <form id="post-${ post._id }-comments-form" action="comments/create" method="post">

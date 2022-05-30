@@ -65,10 +65,8 @@ class PostComments{
                             </a>
                         </small>
                         
-                        ${comment.content}
-                        <br>
                         <small>
-                            ${comment.user.name}
+                            <strong>${comment.user.name}:</strong> ${comment.content}
                         </small>  
 
                 </p>`);

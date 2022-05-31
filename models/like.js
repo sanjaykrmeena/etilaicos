@@ -11,7 +11,7 @@ const likeSchema = new mongoose.Schema({
         require: true,
         refPath: 'onModel'
     },
-    // this field used for defining the type of the liked object since this is a dynamic reference
+    // this field is used for defining the type of the liked object since this is a dynamic reference
     onModel: {
         type: String,
         required: true,
@@ -23,5 +23,4 @@ const likeSchema = new mongoose.Schema({
 
 
 const Like = mongoose.model('Like', likeSchema);
-
 module.exports = Like;

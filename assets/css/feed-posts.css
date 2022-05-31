@@ -164,3 +164,8 @@ img {
     width: 12px;
     color: red; 
 }
+
+.toggle-like-button {
+    color: lightsalmon;
+    text-decoration: none;
+}

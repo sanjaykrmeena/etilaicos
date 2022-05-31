@@ -11,4 +11,9 @@
     <small>
         <strong><%= comment.user.name %>:</strong> <%= comment.content %>
     </small>
+    <small>
+        <a class="toggle-like-button" data-likes="<%= comment.likes.length %>" href="/likes/toggle/?id=<%=comment._id%>&type=Comment">
+            <i class="fas fa-solid fa-heart"></i> <%= comment.likes.length %>
+        </a>
+    </small>
 </p>

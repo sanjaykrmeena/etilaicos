@@ -1,16 +1,50 @@
 const User = require('../models/user');
+const Post = require('../models/post');
 const fs = require('fs');
 const path = require('path');
 
-// let's keep it same as before
-module.exports.profile = function (req, res) {
-    User.findById(req.params.id, function (err, user) {
-        return res.render('user_profile', {
-            title: 'User Profile',
-            profile_user: user
-        });
-    });
+module.exports.profile = async function(req,res){
 
+    try{
+        let post = await Post.find({user: req.params.id})
+        .sort('-createdAt')
+        .populate('user')
+        .populate({
+            path: 'comments',
+            populate: {
+                path: 'user likes'
+            }
+        })
+        .populate('likes');
+        // console.log('---------->',post);
+        
+    
+        let user = await User.find({});
+    
+        // let signInUserFriends;
+        // if(req.user){
+        //  signInUserFriends = await User.findById(req.user._id)
+        //  .populate('friendship', 'name email avatar');
+        // }
+
+        let signInUserFriends = await User.find({ friendship: req.params.id }).populate('friendship', 'name email avatar');
+    
+        let signin_User = await User.findById(req.params.id);
+    
+        return res.render('user_profile',{
+            title : "profile",
+            profile_user : signin_User,
+            posts : post,
+            all_users : user,
+            all_friends : signInUserFriends
+        });
+
+
+    }catch(err){
+        console.log('ERROR',err);
+        return;
+    }
+  
 }
 
 

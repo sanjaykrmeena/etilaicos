@@ -15,7 +15,13 @@
                     <a href="/">Home</a>
                 </li>   
                 <li>
-                    <a href="/users/profile"><%= user.name %></a>
+                    <!-- <a href="/users/profile"><%= user.name %></a> -->
+                    <a
+                      href="/users/profile/<%=locals.user._id%>"
+                      style="text-decoration: none"
+                    >
+                      <i class="fas fa-user-circle"></i> Profile
+                    </a>
                 </li>
                 <li>
                     <a href="/users/sign-out">Sign Out</a>

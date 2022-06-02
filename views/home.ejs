@@ -18,12 +18,25 @@
 
         <div id="home-container">
 
-            <section id="menu">
-                <h2> Menu </h2>
+            <section id="users">
+                <h3>Users</h3>
+                <% for(u of all_users) { %>
+                    <p style="display: flex;">
+                        <%if(u.avatar){%>
+                            <img src="<%=u.avatar%>" alt="image" width="30">
+                            <%}else{%>
+                                <i class="fas fa-user-circle" style="font-size: 1.8rem;"></i>
+                            <%}%>
+                        <a href="/users/profile/<%= u.id %>" style="padding-top: 5px;"><%= u.name %></a>
+                    </p>
+                <% } %>
+                <!-- <form class="search" onsubmit="return false;">
+                    <input type="text" placeholder="Search.." name="search">
+                    <button data-ripple type="button" onclick="onSearch(this);"><i class="fa fa-search"></i></button>
+                </form> -->
             </section>
 
             <section id="feed-posts">
-                <h2 style="padding-top: 10%;">Posts</h2>
                 <form action="/posts/create" id="new-post-form" method="post" class="card">
                     <textarea name="content" cols="50" rows="6" placeholder="Type Here..." required
                         style="border-radius: 10px; width: 92%; margin-top: 20px; outline: none; border: none; background-color: honeydew;"></textarea>
@@ -44,12 +57,24 @@
 
 
             <section id="user-friends">
-                <h2>Friends</h2>
-                <% for(u of all_users) { %>
-                    <p>
-                        <a href="/users/profile/<%= u.id %>"><%= u.name %></a>
-                    </p>
+                <h3>Friends</h3>
+                <% if(locals.user.friendship.length == 0) { %>
+                    No Friends to Show.!
+                <% } else { %>
+                    <%for(friends of all_friends.friendship){%>
+                        <p style="display: flex;">
+                            <%if(friends.avatar){%>
+                                <img src="<%=friends.avatar%>" alt="image" width="30">
+                              <%}else{%>
+                                  <i class="fas fa-user-circle" style="font-size: 1.8rem;"></i>
+                               <%}%>
+                              <a href="/users/profile/<%=friends._id%>" style="padding-top: 5px;"><%=friends.name%></a>
+                        </p>
+                    <%}%>
                 <% } %>
+
+                <%- include('_chat_box') -%>
+
             </section>
         </div>
 
@@ -64,6 +89,12 @@
                 let self = this;
                 let toggleLike = new ToggleLike(self);
             });
+        </script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.1/socket.io.js"></script>
+        <script src="/js/chat_engine.js"></script>
+        <script>
+            new ChatEngine('user-chat-box', '<%= locals.user.email %>')
         </script>
 
 

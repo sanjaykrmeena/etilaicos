@@ -1,11 +1,11 @@
 footer {
   position: fixed;
   bottom: 0;
-  width: 24%;
+  width: 20%;
   overflow: hidden;
   background-color: aliceblue;
   text-align: center;
-  /* font-size: small; */
+  font-size: smaller;
   font-weight: bold;
   font-family: serif;
   color: gray;
@@ -13,7 +13,26 @@ footer {
   transition: 0.3s; */
 }
 
+@media screen and (max-height: 440px) {
+  footer {
+    width: 0%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  footer {
+    width: 0%;
+  }
+}
+
 /* footer div {
   margin-top: 50px;
   padding: 5px;
+} */
+
+/**********************CHAT-BOX*******************/
+
+/* .chat-box {
+  position: fixed;
+  margin-bottom: 0px;
 } */

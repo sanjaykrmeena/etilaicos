@@ -1,38 +1,46 @@
 const Post = require('../models/post');
 const User = require('../models/user');
+const friendship = require('../models/friendship');
 
+module.exports.home = async function(req,res){
+    try{
 
-module.exports.home = async function (req, res) {
-
-    try {
-        // CHANGE :: populate the likes of each post and comment
-        let posts = await Post.find({})
+        let post = await Post.find({})
         .sort('-createdAt')
         .populate('user')
         .populate({
             path: 'comments',
             populate: {
-                path: 'likes'
-            },
-            populate: {
-                path: 'user'
+                path: 'user likes'
             }
-        }).populate('likes');
+        })
+        .populate('likes');
+        // console.log('---------->',post);
+        
 
-        let users = await User.find({});
+        let user = await User.find({});
 
-        return res.render('home', {
-            title: "Etilaicos | Home",
-            posts: posts,
-            all_users: users
+        let signInUserFriends;
+        if(req.user){
+         signInUserFriends = await User.findById(req.user._id)
+         .populate('friendship', 'name email avatar');
+        }
+
+
+       
+        return res.render('home',{
+            title:"Etilaicos | Home",
+            posts : post,
+            all_users : user,
+            all_friends : signInUserFriends
         });
-    }
-    catch (err) {
-        console.log('Error', err);
+    }catch(err){
+        console.log('ERROR',err);
         return;
     }
-
+                
 }
+
 
 // module.exports.actionName = function(req, res){}
 

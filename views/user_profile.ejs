@@ -1,18 +1,23 @@
 <link rel="stylesheet" href="/css/user_profile.css">
-
+<script src="https://kit.fontawesome.com/d817911436.js" crossorigin="anonymous"></script>
 
 
 <% if(user.id == profile_user.id) { %>
 
     <div id="profile-image">
-        <img src="<%= user.avatar %>" alt="<%= user.name %>" width="100">
+        <% if(user.avatar) { %> 
+            <img src="<%= user.avatar %>" alt="<%= user.name %>" width="100">
+        <% } else { %>
+            <i class="fas fa-user-circle" style="font-size: 5rem; color: grey;"></i>
+        <% } %>
     </div>
 
     <!-- if user matches then show the update form -->
     <div id="user-info-update">
         <form action="/users/update/<%= profile_user.id %>" enctype="multipart/form-data" method="post">
-            <input type="text" name="name" placeholder="Your Name" value="<%= profile_user.name %>" required class="input"> <br>
-            <input type="email" name="email" placeholder="Your Email" value="<%= profile_user.email %>" required class="input"> <br>
+            <p id="frnd-info">Friends &nbsp; <%=locals.user.friendship.length%></p> 
+            <input type="text" name="name" placeholder="Your Name" value="<%= profile_user.name %>" class="input" required> <br>
+            <input type="email" name="email" placeholder="Your Email" value="<%= profile_user.email %>" class="input" required> <br>
             <input type="file" name="avatar" placeholder="Profile Picture" id="choose-file"> <br>
             <input type="submit" value="Update" class="btn">
         </form>
@@ -22,9 +27,35 @@
     <!-- else show the profile info only -->
     <div id="user-info">
         <div id="profile-image">
-            <img src="<%= profile_user.avatar %>" alt="<%= profile_user.name %>" width="100">
+            <% if(profile_user.avatar) { %> 
+                <img src="<%= profile_user.avatar %>" alt="<%= profile_user.name %>" width="100">
+            <% } else { %>
+                <i class="fas fa-user-circle" style="font-size: 5rem; color: grey;"></i>
+            <% } %>
         </div>
         <p> <%= profile_user.name %> </p>
         <p> <%= profile_user.email %> </p>
+
+        <%if(!locals.user.friendship.find(x => x.toString() === profile_user.id) && (locals.user.id != profile_user.id)){%>
+            <div class="add-remove-btn" id="add-btn">
+              <a href="/friends/create/?toid=<%=profile_user._id%>">
+                <i class="fas fa-user-plus" style="color: black;"></i> &nbsp Add
+            </a>
+            </div>
+        <%}%>
+
+     
+        <%if(locals.user.friendship.find(x => x.toString() === profile_user.id)){%>
+            <div class="add-remove-btn" id="remove-btn">
+              <a href="/friends/destroy/?toid=<%=profile_user._id%>">
+                <i class="fas fa-user-minus" style="color: black;"></i> &nbsp Remove
+              </a>
+            </div>
+        <%}%>
+
     </div>
+
+    <!-- CHANGE :: import the script file for toggle freind -->
+    <script src="js/toggle_friend.js"></script>
+    
 <% } %>

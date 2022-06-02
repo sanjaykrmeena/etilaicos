@@ -1,0 +1,45 @@
+<script src="https://kit.fontawesome.com/d817911436.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="/css/chat_box.css">
+
+<% if(locals.user) { %> 
+
+    <button class="open-button" onclick="openForm()" style="font-weight:bold; font-size: large;">Chat</button>
+    
+    <div class="chat-popup" id="user-chat-box">
+
+        <div class="close-btn" onclick="closeForm()">
+            <img src="/images/xmark-solid.svg" alt="close" width="15">
+        </div>
+
+        <p style="text-align: center;">Chat Messages</p>
+
+        <ul id="chat-messages-list" style="border-top: 1px solid lightgrey;">
+
+            <li class="other-message">
+                <!-- <span>Other Message</span> -->
+            </li>
+
+            <li class="self-message">
+                <!-- <span>Self Message</span> -->
+            </li>
+
+        </ul>
+
+        <div id="chat-message-input-container">
+            <textarea placeholder="Type message here.." name="msg" id="chat-message-input" required></textarea>
+            <button type="submit" id="send-message">Send</button>
+        </div>
+        
+    </div>   
+
+    <script>
+        function openForm() {
+          document.getElementById("user-chat-box").style.display = "block";
+        }
+        
+        function closeForm() {
+          document.getElementById("user-chat-box").style.display = "none";
+        }
+    </script>
+    
+<% } %>

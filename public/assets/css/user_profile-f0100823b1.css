@@ -1,0 +1,85 @@
+body {
+  background-color: aliceblue;
+}
+
+#profile-image {
+  display: flex;
+  justify-content: center;
+  margin-top: 100px;
+}
+
+#frnd-info {
+  padding-left: 85px;
+  font-family: Helvetica, Arial, sans-serif;
+  color: grey;
+  font-size: large;
+  font-weight: bold;
+}
+
+#user-info-update {
+  display: flex;
+  justify-content: center;
+}
+
+.input {
+  background-color: honeydew;
+  color: grey;
+  font-size: large;
+  width: 100%;
+  outline: none;
+  border: none;
+  border-radius: 0.5rem;
+  border: 1px solid #15c39a;
+  margin-bottom: 20px;
+  padding: 5px;
+}
+
+#choose-file {
+  margin-bottom: 20px;
+  margin-left: 15%;
+}
+
+.btn {
+  cursor: pointer;
+  font-size: large;
+  font-weight: bold;
+  color: white;
+  background-color: #15c39a;
+  height: 30px;
+  width: 80px;
+  border: 1px solid #15c39a;
+  /* some kind of blue border */
+  /* other CSS styles */
+  /* round the corners */
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  outline: none;
+  margin-left: 35%;
+}
+
+#user-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: large;
+}
+
+.add-remove-btn a {
+  color: black;
+  text-decoration: none;
+}
+
+#add-btn {
+  background-color: lightgreen;
+  border-radius: 1.5rem;
+  padding: 10px;
+}
+
+#remove-btn {
+  background-color: salmon;
+  border-radius: 1.5rem;
+  padding: 10px;
+}

@@ -1,0 +1,138 @@
+/*************************CHAT-BOX*************************/
+
+body {font-family: Arial, Helvetica, sans-serif;}
+* {box-sizing: border-box;}
+
+/* Button used to open the chat form - fixed at the bottom of the page */
+.open-button {
+  background-color: #555;
+  color: white;
+  padding: 14px 20px;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+  position: fixed;
+  bottom: 3px;  /* 23 */
+  right: 3px;   /* 28 */
+  width: 280px;
+}
+
+/* The popup chat - hidden by default */
+.chat-popup {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  right: 2px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  border: 1px solid lightgrey;              /*#f1f1f1*/
+  z-index: 9;
+  background-color: white;
+  padding-top: 20px;
+}
+
+/* Add styles to the form container */
+
+#chat-messages-list {
+    list-style: none;
+    padding: 10px;
+    min-height: 250px;
+    width: 300px;
+    /* height: 70%; */
+    background-color: white;
+    overflow: auto; 
+    max-height: 250px;
+    overflow: auto;
+}
+
+/* Set a style for the submit/send button */
+/* .bttn {
+  background-color: #04AA6D;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer; 
+  width: 30%;
+  bottom: 0;
+  opacity: 0.8;
+} */
+
+/* Add a red background color to the cancel button */
+/* .chat-form .cancel {
+  background-color: red;
+} */
+
+.close-btn {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    padding-right: 12px;
+    padding-top: 5px;
+    cursor: pointer;
+}
+
+/* Add some hover effects to buttons */
+.chat-form .btn:hover, .open-button:hover {
+  opacity: 1;
+}
+
+#chat-message-input-container {
+    display: flex;
+}
+
+.other-message {
+    text-align: left;
+    padding: 5px; 
+}
+
+.other-message span {
+    display: inline-block;
+    padding: 5px;
+    color: black;
+    background-color: #ffa0a0; 
+    border-radius: 20px;
+    font-size: small;
+}
+
+.self-message {
+    text-align: right;
+    padding: 5px; 
+}
+
+.self-message span {
+    display: inline-block;
+    padding: 5px;
+    color: black;
+    background-color: #a0dcff; 
+    border-radius: 20px;
+    font-size: small;
+}
+
+
+/********************chat-message-input-container*************/
+
+#chat-message-input-container {
+    height: 24%;
+    width: 100%;
+    display: flex;
+    flex-direction: row; 
+    padding: 5px;
+}
+
+#chat-message-input {
+    height: 50%;
+    width: 70%; 
+    background-color: honeydew;
+    border: 1px solid lightgrey;   /* none */
+    outline: none;
+}
+
+#send-message {
+  background-color: #04AA6D;
+  color: white;
+  /* padding: 16px 20px; */
+  border: none;
+  cursor: pointer; 
+  width: 30%;
+  bottom: 0;
+  opacity: 0.8;
+}

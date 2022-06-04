@@ -1,0 +1,1 @@
+footer{position:fixed;bottom:0;width:20%;overflow:hidden;background-color:#f0f8ff;text-align:center;font-size:smaller;font-weight:700;font-family:serif;color:gray}@media screen and (max-height:440px){footer{width:0}}@media screen and (max-width:600px){footer{width:0}}

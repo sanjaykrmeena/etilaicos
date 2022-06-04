@@ -9,12 +9,17 @@
         </small>
     <% } %>
 
-    
     <small>
-        <strong><%= post.user.name %></strong>
+        <a href="/users/profile/<%= post.user.id %>" style="text-decoration: none; color: black;">
+            <strong><%= post.user.name %></strong>
+        </a>
     </small>
     <p></p>
     <%= post.content %>
+    <p></p>
+    <% if(post.picture) { %>
+        <img src="<%= post.picture %>" alt="img" width="100%">
+    <% } %>
     <p></p>
     <small>
         <a class="toggle-like-button" data-likes="<%= post.likes.length %>" href="/likes/toggle/?id=<%=post._id%>&type=Post">

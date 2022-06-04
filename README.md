@@ -9,6 +9,7 @@ It is a social media web app where users can SignUp and start using it, they can
 * Delete Post
 * Add comment
 * Delete Comment
+* Like Post/Comment
 * Add avatar to your profile
 * Update your Profile
 * Add friends

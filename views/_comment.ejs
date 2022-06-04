@@ -9,7 +9,9 @@
     <% } %>
 
     <small>
-        <strong><%= comment.user.name %>:</strong> <%= comment.content %>
+        <a href="/users/profile/<%= comment.user.id %>" style="text-decoration: none; color: black">
+            <strong><%= comment.user.name %>:</strong>
+        </a> <%= comment.content %>
     </small>
     <small>
         <a class="toggle-like-button" data-likes="<%= comment.likes.length %>" href="/likes/toggle/?id=<%=comment._id%>&type=Comment">

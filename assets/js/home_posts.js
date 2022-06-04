@@ -1,3 +1,4 @@
+
 {
     // method to submit the form data for new post using AJAX
     let createPost = function () {
@@ -51,14 +52,18 @@
                 
                     
                 <small>
-                    <strong> ${ post.user.name } </strong>
+                   <a href="/users/profile/${ post.user.id }" style="text-decoration: none; color: black;">
+                      <strong>${ post.user.name }</strong>
+                   </a>
                 </small>
                 <p></p>
                 ${ post.content }
+                <br>
+                <img src=" ${ post.picture } alt="img" width="100">
                 <p></p>
                 <small>
                     <a class="toggle-like-button" data-likes="0" href="/likes/toggle/?id=${post._id}&type=Post">
-                    <i class="fas fa-solid fa-heart"></i> 0
+                       <i class="fas fa-solid fa-heart"></i> 0
                     </a>
                 </small>
                 <p></p>
@@ -132,3 +137,8 @@
     createPost();
     convertPostsToAjax();
 }
+
+
+// <!-- importing this script for creating the comments -->
+// <script src="/js/home_posts.js"></script>
+// <script src="/js/home_post_comments.js"></script>

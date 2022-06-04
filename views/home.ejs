@@ -30,16 +30,14 @@
                         <a href="/users/profile/<%= u.id %>" style="padding-top: 5px;"><%= u.name %></a>
                     </p>
                 <% } %>
-                <!-- <form class="search" onsubmit="return false;">
-                    <input type="text" placeholder="Search.." name="search">
-                    <button data-ripple type="button" onclick="onSearch(this);"><i class="fa fa-search"></i></button>
-                </form> -->
+           
             </section>
 
             <section id="feed-posts">
-                <form action="/posts/create" id="new-post-form" method="post" class="card">
-                    <textarea name="content" cols="50" rows="6" placeholder="Type Here..." required
-                        style="border-radius: 10px; width: 92%; margin-top: 20px; outline: none; border: none; background-color: honeydew;"></textarea>
+                <form action="/posts/create" id="new-post-form" class="card" method="post" enctype="multipart/form-data">
+                    <textarea name="content" cols="50" rows="4" placeholder="Type Here..." required
+                        style="border-radius: 10px; width: 92%; margin-top: 20px; outline: none; border: none; background-color: honeydew;"></textarea> <br> <br>
+                    <input type="file" name="picture" id="choose-btn">
                     <br> <br>
                     <input type="submit" value="Post" class="btn">
                 </form>
@@ -77,10 +75,10 @@
 
             </section>
         </div>
-
-        <!-- importing this script for creating the comments -->
-        <script src="/js/home_post_comments.js" ></script>
-        <script src="/js/home_posts.js"></script>
+        
+        <!-- js scripts removed which uses AJAX to make it a dynamic page -->
+        <!-- 1. from home_posts.js -->
+        <!-- 2. from home_post_comments -->
 
         <!-- CHANGE :: import the script file for toggle likes, also run it over for the already present posts and comments on the page -->
         <script src="js/toggle_likes.js"></script>

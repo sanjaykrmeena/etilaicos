@@ -35,7 +35,7 @@ console.log('chat server is listening on port 5000');
 //     prefix: '/css'
 // }));
 
-app.use(express.urlencoded());
+app.use(express.urlencoded({extended: false}));
 
 app.use(cookieParser());
 
